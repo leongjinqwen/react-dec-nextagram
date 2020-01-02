@@ -2,7 +2,7 @@ import React from "react"
 import { makeStyles,withStyles } from '@material-ui/core/styles';
 import LinearProgress from '@material-ui/core/LinearProgress';
 
-const LoadingIndicator = ({color,size="100px"})=>{
+const LoadingIndicator = ()=>{
     const useStyles = makeStyles(theme => ({
       root: {
         width: '100%',

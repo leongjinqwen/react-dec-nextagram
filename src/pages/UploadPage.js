@@ -75,7 +75,7 @@ const UploadPage = ({currentUser}) => {
                         Make sure the image being uploaded is a supported format.
                     </FormText>
                     <Label for="upload-photo" style={chooseButton}>Choose</Label>
-                    <Input type="file" name="image-file" id="upload-photo" onChange={handleInput} />
+                    <Input type="file" capture name="image-file" id="upload-photo" onChange={handleInput} />
                     {imageFile ?
                         <Label onClick={handleSubmit} style={chooseButton}>Upload</Label>
                         : null

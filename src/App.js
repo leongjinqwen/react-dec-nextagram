@@ -89,7 +89,7 @@ function App() {
     <>
       <NavBar currentUser={currentUser} signUpUser={signUpUser} loginUser={loginUser} logoutUser={logoutUser} />
       <ToastContainer />
-      {isLoading ? <LoadingIndicator color="blue" size="200px" /> :
+      {isLoading ? <LoadingIndicator /> :
         <Switch>
           <Route exact path="/" component={() => <HomePage users={users} />} />
           <Route exact path="/profile" component={() => <MyProfilePage currentUser={currentUser} />} />

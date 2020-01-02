@@ -14,12 +14,14 @@ const Likes = ({ imageId }) => {
             marginLeft: theme.spacing(2),
         },
         small: {
-          width: theme.spacing(4),
-          height: theme.spacing(4),
+            marginLeft: theme.spacing(-1),
+            width: theme.spacing(3),
+            height: theme.spacing(3),
         },
     }));
     const classes = useStyles();
     const [ likes,setLikes ] = useState([])
+    const [ filterLikes,setFilterLikes ] = useState([])
     const [ liked,setLiked ] = useState(false)
     const jwt = localStorage.getItem("token")
     const user = JSON.parse(localStorage.getItem("user"))
@@ -36,6 +38,9 @@ const Likes = ({ imageId }) => {
             .then(result => {
                 setLiked(result.data.liked)
                 setLikes(result.data.likes)
+                if (result.data.likes.length>5){
+                    setFilterLikes(result.data.likes.filter((user,index)=>index<5))
+                }
             })
             .catch(error => {
                 console.log('ERROR: ', error)
@@ -87,11 +92,25 @@ const Likes = ({ imageId }) => {
                 </Badge>
             </IconButton>
             <AvatarGroup className={classes.container} >
-                {likes.map(user=>(
-                    <Link key={user.id} to={`/users/${user.id}`} style={{border:'none'}} >
-                        <Avatar alt={user.username} src={user.profileImage} className={classes.small} />
-                    </Link>
-                ))}
+                {likes.length>5 ?
+                    <>
+                    {filterLikes.map(user=>(
+                        <Link key={user.id} to={`/users/${user.id}`} style={{border:'none'}} >
+                            <Avatar alt={user.username} src={user.profileImage} className={classes.small} />
+                        </Link>
+                        )
+                        )}
+                        <Avatar>+{likes.length-5}</Avatar>
+                    </>
+                    :
+                    <>
+                    {likes.map(user=>(
+                        <Link key={user.id} to={`/users/${user.id}`} style={{border:'none'}} >
+                            <Avatar alt={user.username} src={user.profileImage} className={classes.small} />
+                        </Link>
+                    ))}
+                    </>
+                }
             </AvatarGroup>
         </>
     )

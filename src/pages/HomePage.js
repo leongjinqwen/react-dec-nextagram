@@ -45,29 +45,27 @@ const HomePage = props=>{
   return(
     <Container>
       {props.users.map((user) => (
-        <>
-          <Card key={user.id} className={classes.card}>
-            <Link to={`/users/${user.id}`}>
-              <CardHeader
-                avatar={<Avatar aria-label="recipe" alt="profile" src={user.profileImage} />}
-                action={
-                  <IconButton aria-label="settings">
-                    <MoreVertIcon />
-                  </IconButton>
-                }
-                title={user.username}
-              />
-              <div>
-                <UserImages page="homepage" id={user.id} />
-              </div> 
-              <CardActions disableSpacing>
-                <IconButton aria-label="share">
-                  <ShareIcon />
+        <Card key={user.id} className={classes.card}>
+          <Link to={`/users/${user.id}`}>
+            <CardHeader
+              avatar={<Avatar aria-label="recipe" alt="profile" src={user.profileImage} />}
+              action={
+                <IconButton aria-label="settings">
+                  <MoreVertIcon />
                 </IconButton>
-              </CardActions>
-            </Link>
-          </Card>
-        </>
+              }
+              title={user.username}
+            />
+            <div>
+              <UserImages page="homepage" id={user.id} />
+            </div> 
+            <CardActions disableSpacing>
+              <IconButton aria-label="share">
+                <ShareIcon />
+              </IconButton>
+            </CardActions>
+          </Link>
+        </Card>
       ))}
     </Container>
   )
