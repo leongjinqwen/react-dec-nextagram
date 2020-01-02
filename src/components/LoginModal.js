@@ -40,7 +40,7 @@ const LoginModal = ({className,show,toggle,toggleShow,loginUser}) => {
   }
 
   return (
-    <div>
+    <>
       <Modal isOpen={show} toggle={toggleShow} className={className}>
         <ModalHeader className={classes.header} toggle={toggleShow}>Login</ModalHeader>
         <ModalBody>
@@ -59,7 +59,7 @@ const LoginModal = ({className,show,toggle,toggleShow,loginUser}) => {
           <Button outline color="primary" onClick={toggle}>Sign up now</Button>{' '}
         </ModalFooter>
       </Modal>
-    </div>
+    </>
   );
 }
 

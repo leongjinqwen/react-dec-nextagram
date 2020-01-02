@@ -72,7 +72,7 @@ const SignUpModal = ({className,show,toggle,toggleShow,signUpUser}) => {
     setTimeout(toggleShow,1000);
   }
   return (
-    <div>
+    <>
       <Modal isOpen={show} toggle={toggleShow} className={className}>
         <ModalHeader className={classes.header} toggle={toggleShow}>Sign Up</ModalHeader>
         <ModalBody>
@@ -141,7 +141,7 @@ const SignUpModal = ({className,show,toggle,toggleShow,signUpUser}) => {
           <Button outline color="primary" onClick={toggle}>Login now</Button>
         </ModalFooter>
       </Modal>
-    </div>
+    </>
   );
 }
 

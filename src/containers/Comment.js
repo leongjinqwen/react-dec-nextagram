@@ -81,7 +81,7 @@ const Comment = ({ imageId }) => {
         })
         setSubmitted(false)
     }
-    const handleLiked = (commentId,liked) =>{
+    const handleLiked = (commentId) =>{
         const initialComments = [...comments]
         setComments(comments.map(comment=>{
             if (comment.id===commentId){
@@ -98,7 +98,6 @@ const Comment = ({ imageId }) => {
             }
         })
         .then(result => {
-            console.log(result)
             setComments(comments.map(comment=>{
                 if (comment.id===result.data.comment_id){
                     return  {...comment,liked:!comment.liked}
@@ -130,8 +129,8 @@ const Comment = ({ imageId }) => {
                         />
                         <IconButton style={{outline:'none',padding:"8px"}} aria-label="add to like">
                             { comment.liked 
-                                ? <ThumbUpIcon style={{color:"blue"}} onClick={()=>handleLiked(comment.id,comment.liked)} /> 
-                                : <ThumbUpIcon onClick={()=>handleLiked(comment.id,comment.liked)} /> }
+                                ? <ThumbUpIcon style={{color:"#4040ee"}} onClick={()=>handleLiked(comment.id)} /> 
+                                : <ThumbUpIcon onClick={()=>handleLiked(comment.id)} /> }
                         </IconButton>
                     </ListItem>
                     </>

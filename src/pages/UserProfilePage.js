@@ -11,9 +11,6 @@ const UserProfilePage = ({currentUser}) => {
     const {id} = useParams()
     const [user,setUser] = useState([])
     const [isLoading,setIsLoading] = useState(true)
-    const image = {
-        borderRadius: "50%",
-    }
     const useStyles = makeStyles(theme => ({
         root: {
           flexGrow: 1,
@@ -36,7 +33,7 @@ const UserProfilePage = ({currentUser}) => {
             isLoading ? <LoadingIndicator /> :
             <Grid container spacing={3} className={classes.root}>
                 <Grid item xs={12} className="text-center p-5">
-                    <Image src={user.profileImage} width="200px" style={image} alt={user.username}/>
+                    <Image src={user.profileImage} width="200px" style={{borderRadius:"50%"}} alt={user.username}/>
                     <h3>@{user.username}</h3>
                 </Grid>
                 <Grid item xs={12}>

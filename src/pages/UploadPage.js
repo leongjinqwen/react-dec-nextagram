@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Form, Input,FormText,Button, Label } from "reactstrap"
+import { Input,FormText, Label } from "reactstrap"
 import axios from "axios"
 import { toast } from 'react-toastify';
 import Card from '@material-ui/core/Card';
@@ -85,5 +85,4 @@ const UploadPage = ({currentUser}) => {
         </div>
     )
 }
-
 export default UploadPage;

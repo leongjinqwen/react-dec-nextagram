@@ -5,11 +5,10 @@ import Image from "react-graceful-image";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import UserImages from "../containers/UserImages";
-import { Redirect,useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const MyProfilePage = ({currentUser}) => {
-    // const [images,setImages] = useState([])
     let history = useHistory();
     const [isLoading,setIsLoading] = useState(true)
     const image = {
@@ -32,7 +31,6 @@ const MyProfilePage = ({currentUser}) => {
         })
         .then(result => {
             setIsLoading(false)
-            // setImages(result.data)
         })
         .catch(error => {
             console.log('ERROR: ', error)

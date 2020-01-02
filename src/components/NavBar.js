@@ -11,19 +11,18 @@ const NavBar = ({ loginUser, signUpUser, currentUser, logoutUser }) => {
 
   const [show, setShow] = useState(false);
   const toggleShow = () => setShow(!show);
-
   return (
-    <div>
+    <>
       {show ? <ShowModal show={show} toggleShow={toggleShow} loginUser={loginUser} signUpUser={signUpUser} /> : null}
       <Navbar style={{backgroundColor:"rgb(255, 255, 255)",borderBottom:"1px solid lightgrey"}} light expand="sm">
-        <NavbarBrand tag={Link} to="/" style={{fontFamily:"cursive",marginLeft:"50px"}}>
+        <NavbarBrand tag={Link} to="/" style={{marginLeft:"45px",cursor:"pointer"}}>
           <Logo />
           <span style={{borderLeft:"1px solid black",margin:"0 20px"}}></span>
           <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png" width="100" alt="instagram" />
         </NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto" onClick={toggle} navbar>
             {
               currentUser ?
                 <>
@@ -48,7 +47,7 @@ const NavBar = ({ loginUser, signUpUser, currentUser, logoutUser }) => {
           </Nav>
         </Collapse>
       </Navbar>
-    </div>
+    </>
   );
 }
 

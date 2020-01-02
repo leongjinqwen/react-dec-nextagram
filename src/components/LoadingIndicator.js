@@ -21,9 +21,9 @@ const LoadingIndicator = ({color,size="100px"})=>{
     })(LinearProgress);
     const classes = useStyles();
     return (
-          <div className={classes.root}>
-            <ColorLinearProgress />
-          </div>
+        <div className={classes.root}>
+          <ColorLinearProgress />
+        </div>
     );
 };
 export default LoadingIndicator;

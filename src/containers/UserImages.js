@@ -67,14 +67,14 @@ const UserImages = ({ id,page,currentUser }) => {
         </CarouselItem>
       )
     })
-  const slides = images.map((item,index) => {
+  const slides = images.map((item) => {
     return (
       <CarouselItem
         onExiting={() => setAnimating(true)}
         onExited={() => setAnimating(false)}
         key={item.id}
       >
-        <img src={item.url} alt={index}  height="300px" style={{display: "block",marginLeft: "auto",marginRight: "auto"}}/>
+        <img src={item.url} alt={item.id}  height="300px" style={{display: "block",marginLeft: "auto",marginRight: "auto"}}/>
       </CarouselItem>
     );
   });

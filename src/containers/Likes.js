@@ -82,7 +82,7 @@ const Likes = ({ imageId }) => {
                     badgeContent={likes.length}
                 >
                     { liked 
-                    ? <FavoriteIcon style={{color:"red"}} onClick={handleLiked} /> 
+                    ? <FavoriteIcon style={{color:"#d31960"}} onClick={handleLiked} /> 
                     : <FavoriteIcon onClick={handleLiked} /> }
                 </Badge>
             </IconButton>

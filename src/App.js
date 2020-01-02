@@ -4,19 +4,19 @@ import LoadingIndicator from "./components/LoadingIndicator";
 import HomePage from "./pages/HomePage";
 import UserProfilePage from "./pages/UserProfilePage";
 import NavBar from "./components/NavBar";
+import MyProfilePage from "./pages/MyProfilePage"
+import UploadPage from "./pages/UploadPage";
 import { Route, Switch, useHistory } from "react-router-dom"
 import "./App.css"
 import { ToastContainer, toast } from 'react-toastify';
-import MyProfilePage from "./pages/MyProfilePage"
-import StoreProvider from "./hooks/TestStore";
-import UploadPage from "./pages/UploadPage";
+// import StoreProvider from "./hooks/TestStore";
 
 function App() {
   const [users, setUsers] = useState([]);
   const [isLoading, setIsLoading] = useState(true)
   const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')))
   let history = useHistory();
-  
+
   useEffect(() => {
     axios.get('https://insta.nextacademy.com/api/v1/users')
       .then(result => {
@@ -86,7 +86,7 @@ function App() {
   }
 
   return (
-    <StoreProvider>
+    <>
       <NavBar currentUser={currentUser} signUpUser={signUpUser} loginUser={loginUser} logoutUser={logoutUser} />
       <ToastContainer />
       {isLoading ? <LoadingIndicator color="blue" size="200px" /> :
@@ -97,7 +97,7 @@ function App() {
           <Route path="/users/:id" component={() => <UserProfilePage currentUser={currentUser}/>} />
         </Switch>
       }
-    </StoreProvider>
+    </>
   );
 }
 export default App;

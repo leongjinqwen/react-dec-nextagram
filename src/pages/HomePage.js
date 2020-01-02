@@ -10,6 +10,7 @@ import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import UserImages from "../containers/UserImages";
 import { Link } from "react-router-dom";
+import { Container } from "reactstrap"
 // import { StoreContext } from "../hooks/TestStore";
 
 const HomePage = props=>{
@@ -18,7 +19,7 @@ const HomePage = props=>{
 
   const useStyles = makeStyles(theme => ({
     card: {
-      width: 500,
+      maxWidth: 500,
       marginLeft:'auto',
       marginRight:'auto',
       marginTop:10,
@@ -41,36 +42,34 @@ const HomePage = props=>{
   
   const classes = useStyles();
     
-    return(
+  return(
+    <Container>
+      {props.users.map((user) => (
         <>
-          <div>
-            {props.users.map((user) => (
-              <Card key={user.id} className={classes.card}>
-                <Link to={`/users/${user.id}`}>
-                  <CardHeader
-                    avatar={
-                      <Avatar aria-label="recipe" alt="profile" src={user.profileImage} />
-                    }
-                    action={
-                      <IconButton aria-label="settings">
-                        <MoreVertIcon />
-                      </IconButton>
-                    }
-                    title={user.username}
-                  />
-                  <div>
-                    <UserImages page="homepage" id={user.id} />
-                  </div> 
-                  <CardActions disableSpacing>
-                    <IconButton aria-label="share">
-                      <ShareIcon />
-                    </IconButton>
-                  </CardActions>
-                </Link>
-              </Card>
-            ))}
-          </div>
+          <Card key={user.id} className={classes.card}>
+            <Link to={`/users/${user.id}`}>
+              <CardHeader
+                avatar={<Avatar aria-label="recipe" alt="profile" src={user.profileImage} />}
+                action={
+                  <IconButton aria-label="settings">
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                title={user.username}
+              />
+              <div>
+                <UserImages page="homepage" id={user.id} />
+              </div> 
+              <CardActions disableSpacing>
+                <IconButton aria-label="share">
+                  <ShareIcon />
+                </IconButton>
+              </CardActions>
+            </Link>
+          </Card>
         </>
-    )
+      ))}
+    </Container>
+  )
 }
 export default HomePage;
