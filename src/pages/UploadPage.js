@@ -1,16 +1,25 @@
 import React, {useState} from 'react';
-import { Form,FormGroup, Input,FormText,Button, Label } from "reactstrap"
+import { Form, Input,FormText,Button, Label } from "reactstrap"
 import axios from "axios"
 import { toast } from 'react-toastify';
 import Card from '@material-ui/core/Card';
 import CardMedia from '@material-ui/core/CardMedia';
 import CardContent from '@material-ui/core/CardContent';
 import { makeStyles } from '@material-ui/core/styles';
-// import IconButton from '@material-ui/core/IconButton';
-// import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import { Redirect } from "react-router-dom";
 
+
 const UploadPage = ({currentUser}) => {
+    const chooseButton = {
+        border: "1px solid rgb(235, 28, 131)",
+        background: "linear-gradient(to right,rgb(252, 142, 252),rgb(248, 186, 195),rgb(243, 208, 144),rgb(245, 245, 177))",
+        padding:"5px 10px",
+        borderRadius: "15px",
+        cursor:"pointer",
+        marginRight:"10px",
+        color:"black",
+        // height:"80px"
+    }
     const useStyles = makeStyles(theme => ({
         card: {
           maxWidth: 600,
@@ -59,19 +68,18 @@ const UploadPage = ({currentUser}) => {
             <Card className={classes.card}>
                 <CardMedia
                     className={classes.media}
-                    image={previewImage}
+                    image={previewImage ? previewImage : "https://www.renovabike.it/wp-content/themes/gecko/assets/images/placeholder.png"}
                 />
                 <CardContent style={{padding:"10px 12px"}}>
-                    <Form onSubmit={handleSubmit}>
-                        <FormText color="muted">
-                            Make sure the image being uploaded is a supported format.
-                        </FormText>
-                        {/* <IconButton style={{outline:'none',padding:"4px 8px"}} aria-label="upload"> */}
-                            {/* <Label for="upload-photo" style={{margin:0}}><AddCircleOutlineIcon style={{color:"blue"}}/></Label> */}
-                            <Input type="file" name="image-file" id="upload-photo" onChange={handleInput} />
-                        {/* </IconButton> */}
-                        <Button type="submit" color="primary">Upload</Button>
-                    </Form>
+                    <FormText color="muted">
+                        Make sure the image being uploaded is a supported format.
+                    </FormText>
+                    <Label for="upload-photo" style={chooseButton}>Choose</Label>
+                    <Input type="file" name="image-file" id="upload-photo" onChange={handleInput} />
+                    {imageFile ?
+                        <Label onClick={handleSubmit} style={chooseButton}>Upload</Label>
+                        : null
+                    }
                 </CardContent>
             </Card>
         </div>

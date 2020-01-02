@@ -16,6 +16,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(true)
   const [currentUser, setCurrentUser] = useState(JSON.parse(localStorage.getItem('user')))
   let history = useHistory();
+  
   useEffect(() => {
     axios.get('https://insta.nextacademy.com/api/v1/users')
       .then(result => {

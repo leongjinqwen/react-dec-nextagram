@@ -28,7 +28,6 @@ const LoginModal = ({className,show,toggle,toggleShow,loginUser}) => {
   const { username,password } = userInfo
 
   const handleInput = (e) => {
-    console.log(e.target.value)
     setUserInfo({
       ...userInfo,
       [e.target.name]:e.target.value

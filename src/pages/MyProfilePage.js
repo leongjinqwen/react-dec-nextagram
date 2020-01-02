@@ -5,11 +5,12 @@ import Image from "react-graceful-image";
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 import UserImages from "../containers/UserImages";
-import { Redirect } from "react-router-dom";
+import { Redirect,useHistory } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const MyProfilePage = ({currentUser}) => {
     // const [images,setImages] = useState([])
+    let history = useHistory();
     const [isLoading,setIsLoading] = useState(true)
     const image = {
         borderRadius: "50%",
@@ -40,7 +41,7 @@ const MyProfilePage = ({currentUser}) => {
 
     if (!currentUser){
         toast("Login to access this page.")
-        return <Redirect to="/" />
+        history.push("/")
     }
     return (
         <>
